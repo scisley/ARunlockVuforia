@@ -37,8 +37,5 @@ public class TrackableList : MonoBehaviour {
             Debug.DrawRay(baseplane_origin, baseplane.normal * 3, Color.blue);
         }
 
-              
-
-
     }
 }
