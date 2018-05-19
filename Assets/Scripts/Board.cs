@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Vuforia;
 
 public class Board : MonoBehaviour {
@@ -8,10 +9,21 @@ public class Board : MonoBehaviour {
     //private Vector3 masterUp;
     //private MyManager manager;
     public bool Activate = true;
+    public GameObject PlaneButton;
 
     // True when 3 trackables have been found during the update
     private bool planeFound = false;
     public Plane baseplane = new Plane();
+
+    public void toggleActive() {
+        Activate = !Activate;
+        if (Activate == true) {
+            PlaneButton.GetComponentInChildren<Text>().text = "Lock On";
+        } else {
+            PlaneButton.GetComponentInChildren<Text>().text = "Lock Off";
+        }
+        
+    }
 
     public bool PlaneFound {
         get {
@@ -26,17 +38,7 @@ public class Board : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //if (masterUp == null) {
-        //    masterUp = transform.up;
-        //}
-        Debug.Log("Script was started");
-        //manager = GameObject.Find("ManagerGameObject").GetComponent<MyManager>();
 	}
-	
-    void OnDisable() {
-        //Debug.Log("Script was disabled");
-        //manager.active = false;
-    }
 
     // Update is called once per frame
     void Update() {
